@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User, UsersService } from './users.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular_demo';
+
+  username: string = "Dell India";
+  childData: string;
+  userdata:User;
+  constructor(private service:UsersService){
+
+  }
+  ngOnInit()
+  {
+   this.userdata= this.service.getUser();
+    alert(this.userdata.username)
+  }
+  parentMethod(cdata) {
+    this.childData = cdata
+  }
 }
